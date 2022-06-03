@@ -35,4 +35,83 @@ main {
   display: flex;
   flex-direction: column;
   background: #39393b;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+}
+
+/* Aspect Ratio: 16/9 = .56 * 100% = 56.25% */
+/* May have to play with ratio because of padding */
+
+.card_img-container {
+  width: 100%;
+  padding-top: 51%;
+  overflow: hidden;
+  position: relative;
+}
+
+.card_img-container img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* padding: 10px; */
+}
+
+.card_content {
+  padding: 20px;
+}
+
+.card_title {
+  margin-bottom: 20px;
+}
+
+.card_info {
+  display: flex;
+  align-self: end;
+  align-items: center;
+}
+
+.card_price {
+  margin-left: auto;
+  padding: 5px 20px;
+  background-color: #303032;
+  border-radius: 20px;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 1000px) {
+  .card {
+    grid-column: span 6;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  main {
+    gap: 20px;
+  }
+  .card {
+    grid-column: span 12;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  main {
+    grid-template-columns: 10px repeat(6, 1fr) 10px;
+    gap: 10px;
+  }
+
+  .cards {
+    grid-column: 2 / span 6;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+  .card {
+    grid-column: span 6;
+  }
 }
